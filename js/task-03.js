@@ -22,6 +22,4 @@ const markupItemsGallery = images
   })
   .join('');
 
-console.log(markupItemsGallery);
-
 listGalleryEl.insertAdjacentHTML('afterbegin', markupItemsGallery);
