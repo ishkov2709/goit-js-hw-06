@@ -1,5 +1,5 @@
 const valueEl = document.querySelector('#value');
-const operateBtns = document.querySelectorAll('button[data-action]');
+const operateBtnsEl = document.querySelectorAll('button[data-action]');
 let counterValue = 0;
 
 operateBtns.forEach(btn => {
