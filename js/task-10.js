@@ -7,16 +7,6 @@ const counterBoxArr = [];
 inputCountEl.addEventListener('input', createBoxes);
 
 boxCreateBtnEl.addEventListener('click', () => {
-  counterBoxArr.map((el, i) => {
-    el.style.backgroundColor = getRandomHexColor();
-    if (i === 0) {
-      el.style.width = '30px';
-      el.style.height = '30px';
-    } else {
-      el.style.width = `${30 + i * 10}px`;
-      el.style.height = `${30 + i * 10}px`;
-    }
-  });
   mainBoxEl.append(...counterBoxArr);
 });
 
@@ -27,6 +17,16 @@ function createBoxes(amount) {
     return counterBoxArr.splice(-1);
   }
   counterBoxArr.push(document.createElement('div'));
+  counterBoxArr.map((el, i) => {
+    el.style.backgroundColor = getRandomHexColor();
+    if (i === 0) {
+      el.style.width = '30px';
+      el.style.height = '30px';
+    } else {
+      el.style.width = `${30 + i * 10}px`;
+      el.style.height = `${30 + i * 10}px`;
+    }
+  });
 }
 
 function destroyBoxes() {
