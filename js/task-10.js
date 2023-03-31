@@ -7,24 +7,31 @@ const counterBoxArr = [];
 inputCountEl.addEventListener('input', createBoxes);
 
 boxCreateBtnEl.addEventListener('click', () => {
+  destroyBoxes();
   mainBoxEl.append(...counterBoxArr);
+  customizeBoxes();
 });
 
 boxDetroyBtnEl.addEventListener('click', destroyBoxes);
 
 function createBoxes(amount) {
   if (parseInt(amount.currentTarget.value) < counterBoxArr.length + 1) {
-    return counterBoxArr.splice(-1);
+    return (counterBoxArr.length = amount.currentTarget.value);
   }
-  counterBoxArr.push(document.createElement('div'));
-  counterBoxArr.map((el, i) => {
-    el.style.backgroundColor = getRandomHexColor();
+  return counterBoxArr.push(document.createElement('div'));
+}
+
+function customizeBoxes() {
+  mainBoxEl.querySelectorAll('div').forEach((el, i) => {
     if (i === 0) {
       el.style.width = '30px';
       el.style.height = '30px';
     } else {
       el.style.width = `${30 + i * 10}px`;
       el.style.height = `${30 + i * 10}px`;
+    }
+    if (el.style.backgroundColor === '') {
+      el.style.backgroundColor = getRandomHexColor();
     }
   });
 }
