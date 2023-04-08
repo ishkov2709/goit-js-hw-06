@@ -4,21 +4,21 @@ const boxDetroyBtnEl = document.querySelector('[data-destroy]');
 const mainBoxEl = document.querySelector('#boxes');
 const counterBoxArr = [];
 
-inputCountEl.addEventListener('input', createBoxes);
+inputCountEl.addEventListener('input', () => {});
 
 boxCreateBtnEl.addEventListener('click', () => {
-  destroyBoxes();
+  createBoxes();
   mainBoxEl.append(...counterBoxArr);
   customizeBoxes();
 });
 
 boxDetroyBtnEl.addEventListener('click', destroyBoxes);
 
-function createBoxes(amount) {
-  if (parseInt(amount.currentTarget.value) < counterBoxArr.length + 1) {
-    return (counterBoxArr.length = amount.currentTarget.value);
+function createBoxes() {
+  counterBoxArr.splice(0);
+  for (let i = 0; i < parseInt(inputCountEl.value); i += 1) {
+    counterBoxArr.push(document.createElement('div'));
   }
-  return counterBoxArr.push(document.createElement('div'));
 }
 
 function customizeBoxes() {
@@ -38,6 +38,7 @@ function customizeBoxes() {
 
 function destroyBoxes() {
   mainBoxEl.querySelectorAll('div').forEach(el => el.remove());
+  inputCountEl.value = '';
 }
 
 function getRandomHexColor() {
